@@ -27,6 +27,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        for node in sceneView.scene.rootNode.childNodes {
+            let moveShip = SCNAction.moveBy(x: 1, y: 0.5, z: 0.5, duration: 1)
+            let repeatForever = SCNAction.repeatForever(moveShip)
+            
+            node.runAction(repeatForever)
+            
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
