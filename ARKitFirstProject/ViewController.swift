@@ -30,9 +30,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         for node in sceneView.scene.rootNode.childNodes {
             let moveShip = SCNAction.moveBy(x: 1, y: 0.5, z: 0.5, duration: 1)
-            let repeatForever = SCNAction.repeatForever(moveShip)
+            //let repeatForever = SCNAction.repeatForever(moveShip)
+            let fadeOut = SCNAction.fadeOpacity(by: 0.5, duration: 1)
+            let fadeIn = SCNAction.fadeOpacity(by: 1, duration: 1)
+            let sequence = SCNAction.sequence([moveShip,fadeIn,fadeOut])
             
-            node.runAction(repeatForever)
+            node.runAction(sequence)
             
         }
     }
